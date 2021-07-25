@@ -37,6 +37,10 @@ current_year = datetime.datetime.now().year
 def home():
     return render_template("access.html", logged_in=current_user.is_authenticated, year=current_year)
 
+@app.route("/about")
+def about_us():
+    return render_template("about.html", year=current_year)
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
