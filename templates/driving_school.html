@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Zodreger Driving School</title>
     <link rel="shortcut icon" href="{{url_for('static', filename='img_school/zodIcon.png')}}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.min.css')}}">
 </head>
 
 <body>
 <div class="container">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color:#e4efe7;">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-primary" style="background-color:#e4efe7;">
         <a class="navbar-brand" href="/">
             <img src="{{url_for('static', filename='img_school/zodreger.png')}}">
         </a>
@@ -27,26 +27,24 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Projects</a>
+                    <a class="nav-link" href="#">Link</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Services
+                        Dropdown
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Driving School</a></li>
-                        <li><a class="dropdown-item" href="#">Driver Assessment</a></li>
-                        <li><a class="dropdown-item" href="#">Staff Recruitment</a></li>
-                        <li><a class="dropdown-item" href="#">Trainings</a></li>
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Other Services</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="false">Media Center</a>
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
             </ul>
             <form class="d-sm-flex">
@@ -59,28 +57,22 @@
 <div class="salute"
      style="background-image: url({{ url_for('static', filename='img/traffic-bg.jpg') }})">
 </div>
-<section class="d-flex p-1 text-dark">
-    <div class="table-zod" style="background-color: #DFEEEA">
-        <h4>Project Review</h4>
-        <p class="zod">
-            <img src="{{url_for('static', filename='img_school/zod_project.jpg')}}" class="rounded float-center">
-            Zodreger has been advantaged to provide services to the community and it has been a success. We have
-            successfully graduated over 1000 new drivers over the past six months. We couldn't do better without
-            the help of our community. Thank you all.
-        </p>
-    </div>
-</section>
 <div class="table-responsive" style="background-color: #DFEEEA">
-    <h4>Driver Learner Courses</h4>
-    <table class="table table-bordered table-sm">
-        <!--        <caption class="bg-info">Driver Learner Courses</caption>-->
+    <h3>Project Review</h3>
+    <p>Zodreger has been advantaged to provide services to the community and it has been a success. We
+        have successfully
+        graduated over 1000 new drivers over the past six months. We couldn't do better without the help of our
+        community. Thank you all.</p>
+    <img src="{{url_for('static', filename='img_school/zod_project.jpg')}}">
+    <table class="table table-bordered caption-top table-sm">
+        <caption class="bg-info">Driver Learner Courses</caption>
         <thead class="table-success align-middle">
         <tr>
             <th scope="col">Class or Category</th>
-            <th scope="col">New Driver Fees (Ksh.)</th>
-            <th scope="col">Refresher Fees (Ksh.)</th>
-            <th scope="col">Endorsement Fees (Ksh.)</th>
-            <th scope="col">NTSA Fees (Ksh.)</th>
+            <th scope="col">New Driver Fees (Ksh)</th>
+            <th scope="col">Refresher Fees (Ksh)</th>
+            <th scope="col">Endorsement Fees (Ksh)</th>
+            <th scope="col">NTSA Fees (Ksh)</th>
         </tr>
         </thead>
         <tbody>
@@ -108,6 +100,7 @@
         </tbody>
     </table>
 </div>
-{% include "footer.html" %}
+
 </body>
 </html>
+{% include "footer.html" %}
