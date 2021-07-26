@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = "any_key_goes_here"
 
 # Connect to DB
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", "sqlite:///users.db")
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", "sqlite:///users.db").replace("postgres://", "postgresql://", 1)
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
