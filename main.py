@@ -1,15 +1,17 @@
 import os
 
-from flask import Flask, render_template, request, url_for, redirect, flash, send_from_directory
+from flask import Flask, render_template, request, session, url_for, redirect, flash, send_from_directory
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
-import datetime
+from datetime import timedelta, datetime as dt
 import os
 
 app = Flask(__name__)
 
 app.config["SECRET_KEY"] = "any_key_goes_here"
+app.secret_key = "midomido"
+app.permanent_session_lifetime = timedelta(minutes=5)
 
 # Connect to DB
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", "sqlite:///users.db")
@@ -24,23 +26,29 @@ login_manager.init_app(app)
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-##CREATE TABLE IN DB
+
+# CREATE TABLE IN DB
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
     name = db.Column(db.String(1000))
 
+    def _init_(self, name, email):
+        self.name = name
+        self.email = email
+
 
 # Line below only required once, when creating DB.
 # db.create_all()
 
-current_year = datetime.datetime.now().year
+current_year = dt.now().year
 
 
 @app.route("/")
 def home():
     return render_template("access.html", logged_in=current_user.is_authenticated, year=current_year)
+
 
 @app.route("/about")
 def about_us():
@@ -84,6 +92,7 @@ def login():
     if request.method == "POST":
         email = request.form.get("email")
         password = request.form.get("password")
+        session.permanent = False
 
         # Find user by email entered.
         user = User.query.filter_by(email=email).first()
@@ -122,9 +131,11 @@ def logout():
 def download():
     return send_from_directory('static', filename="files/cheat_sheet.pdf")
 
+
 @app.route("/contact-us")
 def contact_us():
     return render_template("contact.html", year=current_year)
+
 
 @app.route("/school")
 def school():
@@ -132,4 +143,5 @@ def school():
 
 
 if __name__ == "__main__":
+    db.create_all()
     app.run(debug=True)
