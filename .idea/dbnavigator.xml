@@ -118,11 +118,11 @@
           <charset value="UTF-8" />
           <session-management value="true" />
           <ddl-file-binding value="true" />
-          <database-logging value="false" />
+          <database-logging value="true" />
           <connect-automatically value="true" />
           <restore-workspace value="true" />
           <restore-workspace-deep value="true" />
-          <environment-type value="default" />
+          <environment-type value="development" />
           <connectivity-timeout value="5" />
           <idle-time-to-disconnect value="30" />
           <idle-time-to-disconnect-pool value="5" />
